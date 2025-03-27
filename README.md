@@ -2,8 +2,6 @@
 
 **Where Exabeam Documentation Goes To Be Resurrected**
 
-![Exabomination Logo](./assets/exabomination-logo.png)
-
 ## What is this... thing?
 
 EXABOMINATION is the unholy marriage of advanced search technology and Exabeam's vast documentation library. We've stitched together parsers, use cases, rules, and data sources into a monstrous creation that answers your questions with frightening accuracy.
