@@ -1,0 +1,20 @@
+# Frontend dependencies
+streamlit
+requests
+python-dotenv
+pydantic
+httpx
+pytest
+pytest-cov
+
+# API dependencies (needed for models and shared components)
+fastapi
+uvicorn[standard]
+starlette
+python-multipart
+email-validator
+
+# Backend dependencies needed by frontend
+langchain
+langchain_community
+langchain_core

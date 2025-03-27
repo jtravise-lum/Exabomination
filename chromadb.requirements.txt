@@ -1,0 +1,22 @@
+# Core dependencies
+python-dotenv  # For loading .env files
+pydantic
+sqlalchemy
+tqdm
+
+# Data processing
+chromadb
+langchain
+langchain-community
+langchain-voyageai
+pandas
+
+# Embeddings and LLM integration
+anthropic
+openai
+tiktoken  # Token counting for OpenAI models
+requests  # HTTP requests for APIs
+numpy     # For vector operations
+
+# Testing and development
+pytest

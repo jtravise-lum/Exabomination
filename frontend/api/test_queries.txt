@@ -1,0 +1,48 @@
+# Example Test Queries for EXASPERATION API
+
+## Basic Queries
+How does the password reset detection rule work?
+What events are generated during a password reset?
+How do I configure SAML authentication?
+How does Exabeam detect lateral movement?
+What are the components of a detection rule?
+
+## Technical Queries
+How does the parser for Windows Event ID 4624 work?
+What fields are available in the Cisco ASA parser?
+How do I troubleshoot data ingestion issues?
+What are the performance requirements for Advanced Analytics?
+How does Exabeam handle high cardinality fields?
+
+## Filtering Examples
+What Microsoft Active Directory events are used for detection?
+What are the detection capabilities for Okta?
+How does Exabeam handle AWS CloudTrail logs?
+What parsers are available for Palo Alto firewalls?
+What use cases are supported for Azure AD?
+
+## Command Examples
+
+### Search Query with Filters
+python frontend/api/test_client.py --endpoint search --api-key YOUR_API_KEY
+
+### Query Suggestions
+python frontend/api/test_client.py --endpoint suggestions --api-key YOUR_API_KEY
+
+### Test All Endpoints
+python frontend/api/test_client.py --endpoint all --api-key YOUR_API_KEY
+
+### Test with Custom API URL
+python frontend/api/test_client.py --api-url http://localhost:8080/v1 --api-key YOUR_API_KEY
+
+### Testing API Response Codes
+Use the test_client.py script with invalid parameters to test error handling:
+
+1. Invalid API key:
+   python frontend/api/test_client.py --api-key invalid_key
+
+2. Missing required parameters:
+   # Modify the script to send an empty query
+
+3. Rate limiting:
+   # Run multiple requests in quick succession to trigger rate limiting
