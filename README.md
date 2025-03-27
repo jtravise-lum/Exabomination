@@ -1,183 +1,80 @@
-# EXASPERATION
+# EXABOMINATION
 
-**Exabeam Automated Search Assistant Preventing Exasperating Research And Time-wasting In Official Notes**
+**Where Exabeam Documentation Goes To Be Resurrected**
 
-## Overview
+![Exabomination Logo](./assets/exabomination-logo.png)
 
-EXASPERATION is a Retrieval Augmented Generation (RAG) system designed to make Exabeam's extensive documentation accessible and useful. By combining vector search technology with large language models, EXASPERATION allows users to ask natural language questions about Exabeam and receive accurate, contextual answers without needing to navigate through thousands of pages of documentation.
+## What is this... thing?
 
-## The Problem
+EXABOMINATION is the unholy marriage of advanced search technology and Exabeam's vast documentation library. We've stitched together parsers, use cases, rules, and data sources into a monstrous creation that answers your questions with frightening accuracy.
 
-Exabeam's documentation, while comprehensive, can be challenging to navigate. With over 10,000 pages of content covering various data sources, parsers, correlation rules, and use cases, finding specific information can be time-consuming and frustrating. EXASPERATION transforms this "documentation wilderness" into a searchable knowledge base that responds to your queries directly.
+> "It's ALIVE! And it knows everything about correlation rule templates!" — Frankenstein's DevOps Engineer
 
-## Features
+## Features That Will Haunt Your Dreams
 
-- **Natural Language Queries**: Ask questions in plain English about Exabeam features, configurations, or troubleshooting
-- **Contextual Understanding**: The system understands relationships between different parts of the documentation
-- **Source Citations**: All responses include references to the original documentation
-- **Low-latency Responses**: Get answers in seconds rather than hours of manual searching
-- **Continuous Learning**: The system can be updated as new documentation is released
+- **Terrifyingly Fast Search**: Find documentation faster than you can say "MITRE ATT&CK® Coverage Map"
+- **Brain Transplants**: Swap between different content versions (c2402.1, c2304.1, etc.) without losing your mind
+- **Reanimated Results**: Bring dead search queries back to life with intelligent suggestions
+- **Igor's Assistant**: A helpful sidekick that guides you through the laboratory of Exabeam content
+- **Mad Scientist Mode**: Advanced filtering for when you need to dissect documentation with surgical precision
 
-## Technical Architecture
+## How to Summon the Beast
 
-EXASPERATION uses a modular architecture consisting of:
+1. **Installation**:
+   ```bash
+   git clone https://github.com/yourusername/exabomination.git
+   cd exabomination
+   ./setup.sh  # Careful, it might growl at you
+   ```
 
-1. **Document Processing Pipeline**: Chunks Exabeam documentation and extracts metadata
-2. **Vector Database**: Stores embeddings of document chunks for semantic search
-3. **Retrieval Engine**: Finds the most relevant documentation segments for a given query
-4. **LLM Integration**: Generates human-readable responses based on retrieved context
-5. **API Layer**: FastAPI-based API for frontend communication
-6. **Web Interface**: Streamlit-based user interface with search, filter, and feedback capabilities
+2. **Starting the Creature**:
+   ```bash
+   ./awaken.sh
+   # Listen for the thunder and maniacal laughter
+   ```
 
-## Getting Started
+3. **Using Your Creation**:
+   - Navigate to http://localhost:8501
+   - Type your query into the search chamber
+   - Pull the lever and watch it generate answers from beyond the documentation grave
 
-### Prerequisites
+## Navigating the Monster's Mind
 
-- Python 3.8+ (Python 3.10 or 3.11 recommended)
-- 8GB+ RAM recommended
-- 2GB disk space for vector database
-- API keys for Voyage AI (embedding and reranking)
-- Optional API keys for additional LLM services
+Our creation understands the structured horror of Exabeam's documentation:
 
-### Installation
+- **Data Sources**: Discover which vendors and products feed the beast
+- **Use Cases**: Learn what security scenarios the monster can detect
+- **Product Categories**: Browse the categorized catalog of technological terrors
+- **MITRE ATT&CK®**: Explore the creature's defensive capabilities against cyber threats
 
-#### Component Architecture
+## FAQ (Frightening Questions Actually Asked)
 
-EXASPERATION consists of two main components that can be run separately:
+**Q: Will Exabomination replace our security analysts?**  
+A: No, but it might make them more powerful than nature intended.
 
-1. **ChromaDB Vector Database** - Runs in Docker
-2. **Embedding and Query Pipeline** - Runs in Python virtual environment
+**Q: Is it dangerous?**  
+A: Only to those who fear knowledge and efficient documentation search.
 
-This separation allows for more flexibility and better compatibility with different Python versions.
+**Q: What happens if it can't find an answer?**  
+A: It will suggest alternatives or admit its limitations. We didn't give it pride.
 
-#### Option 1: Using Docker for ChromaDB (Recommended)
+**Q: Does it work offline?**  
+A: The monster requires electricity and a connection to the data sources that give it life.
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/exasperation.git
-cd exasperation
+**Q: Can I contribute to this abomination?**  
+A: Yes! Pull requests welcome. Help us add more parts to our creation.
 
-# Start ChromaDB with Docker
-docker-compose up -d
-```
+## Known Limitations (The Monster's Weak Points)
 
-#### Option 2: Setting up the Embedding Pipeline
-
-```bash
-# Create a dedicated virtual environment
-python -m venv chromadb_venv
-source chromadb_venv/bin/activate  # On Windows: chromadb_venv\Scripts\activate
-
-# Copy example env file and configure
-cp .env.example .env
-# Edit .env to add your API keys
-
-# Install minimal dependencies for embedding
-pip install -r chromadb.requirements.txt
-
-# Initialize the database (this will download and process documentation)
-python -m src.initialize_db
-```
-
-For local ChromaDB installation (not recommended), set `use_server=False` when initializing the VectorDatabase class.
-
-#### Important Notes
-
-- The `chromadb.requirements.txt` file contains only the minimal dependencies needed for the embedding pipeline
-- Docker Compose should be installed at the system level, not in the virtual environment
-- The Python embedding pipeline is in a separate environment (chromadb_venv) from any web UI components
-- Python 3.12+ may have compatibility issues with some packages - use Python 3.10-3.11 for best results
-
-### Usage
-
-#### Testing the Query Engine
-
-```bash
-# Test with default (mock) LLM
-./test_query.py "What parsers are available for Windows Security events?"
-
-# Test with Anthropic Claude
-./test_query.py --provider anthropic --model claude-3-5-sonnet-20240620 "Explain the Audit Tampering use case"
-
-# Test with OpenAI GPT
-./test_query.py --provider openai --model gpt-4o "How does Exabeam detect lateral movement?"
-
-# Using filters and adjusting parameters
-./test_query.py --top-k 10 --temperature 0.3 "What MITRE ATT&CK techniques are covered by Exabeam?"
-```
-
-#### Running the Query Engine
-
-After setting up the environment and initializing the database, you can use the query engine to test the system:
-
-```bash
-# Test with the mock LLM (no API key required)
-./test_query.py --provider mock "What parsers are available for Windows Security events?"
-
-# Test with Anthropic Claude (requires API key)
-./test_query.py --provider anthropic "Explain the Audit Tampering use case"
-
-# Test with OpenAI GPT (requires API key)
-./test_query.py --provider openai "How does Exabeam detect lateral movement?"
-
-# Adjust parameters
-./test_query.py --top-k 10 --temperature 0.3 "What MITRE ATT&CK techniques are covered by Exabeam?"
-```
-
-#### Using the Web Interface
-
-```bash
-# Set up the frontend environment
-./setup_frontend.sh
-
-# Run the frontend application
-./run_frontend.sh
-```
-
-Then open your browser to http://localhost:8501 to begin asking questions.
-
-Make sure the API is running before starting the frontend:
-
-```bash
-# Run the API server
-python -m frontend.api.main
-```
-
-The API runs on port 8888 by default.
-
-## Example Queries
-
-- "What parsers are available for 1Password?"
-- "How does the Audit Tampering use case work with Microsoft products?"
-- "Explain the T1070.001 MITRE technique and how Exabeam detects it"
-- "What correlation rules are available for detecting lateral movement?"
-- "How do I set up the integration with Cisco ACS?"
-
-## Roadmap
-
-- [x] Web interface for searching and viewing results
-- [x] API layer for frontend-backend communication
-- [x] User feedback mechanism for rating responses
-- [ ] Add support for PDF documentation
-- [ ] Enhanced analytics and usage tracking
-- [ ] Create CLI interface for integration with scripts
-- [ ] Add visualization for relationships between components
-- [ ] Support for real-time documentation updates
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- Cannot process interpretive dance queries (yet)
+- Occasionally groans when asked about legacy systems
+- Has an inexplicable fear of badly formatted JSON
+- Sometimes talks about "the before time" (pre-CIM 2.0)
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- The Exabeam team for creating such *thorough* documentation
-- The open-source community for amazing tools that make this possible
-- Everyone who has ever muttered "I know it's in the docs somewhere..." while searching frantically
+MIT License - Feel free to create your own monsters, but we're not responsible for what they do after midnight.
 
 ---
 
-**EXASPERATION**: *Because life's too short to read the manual... entirely.*
+*"Sometimes, dead documentation is better left dead."* — Security Analyst Semetary
